@@ -37,7 +37,7 @@ This tool helps automate the process of categorizing Excel data by:
    ```
 
 The script will:
-- Process all 27 columns of each row
+- Process all columns with data for each row
 - Match content against the tags list
 - Assign up to 5 relevant tags per row
 - Save results in `data/output-with-tags.xlsx`

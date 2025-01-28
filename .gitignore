@@ -32,6 +32,7 @@ venv/
 
 # Project specific
 data/
+data/*.log
 data/*.txt
 data/*.xlsx
 
