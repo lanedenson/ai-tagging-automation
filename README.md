@@ -27,10 +27,9 @@ This tool helps automate the process of categorizing Excel data by:
    pip install openpyxl
    ```
 
-
 ## Usage
 
-1. Place your Excel file in the `data` directory as `jcd-exports.xlsx`
+1. Place your Excel file in the `data` directory as `input.xlsx`
 2. Ensure your tags are listed in `data/tags.txt` (one tag per line)
 3. Run the script:
    ```bash
@@ -41,13 +40,13 @@ The script will:
 - Process all 27 columns of each row
 - Match content against the tags list
 - Assign up to 5 relevant tags per row
-- Save results in `data/jcd-exports-with-tags.xlsx`
+- Save results in `data/output-with-tags.xlsx`
 
 ## Tag Matching
 
 The script performs basic case-insensitive substring matching. For example:
-- If a row contains "Annual Conference Structure" anywhere in its content
-- The corresponding tag will be assigned to one of the tag columns
+- If a row contains "Topic" anywhere in its content
+- The corresponding "Topic" tag will be assigned to one of the tag columns
 
 ## Output
 
@@ -75,4 +74,3 @@ Feel free to submit issues and enhancement requests.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
