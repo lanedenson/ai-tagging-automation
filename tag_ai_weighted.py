@@ -3,7 +3,7 @@ from datetime import datetime
 from anthropic import Anthropic
 
 # Create log file with timestamp
-log_filename = f'data/tag_processing_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log'
+log_filename = f'data/tag_processing_ai_weighted_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log'
 try:
     log_file = open(log_filename, 'w', encoding='utf-8')
 except IOError:
@@ -137,5 +137,5 @@ for row in range(2, worksheet.max_row + 1):
 # Save the updated XLSX file
 workbook.save('data/output-with-tags.xlsx')
 
-log_message("Processing complete. Results saved in 'output-with-tags.xlsx'")
+log_message("Processing complete. Results saved in 'output-with-tags-ai-weighted.xlsx'")
 log_file.close()
