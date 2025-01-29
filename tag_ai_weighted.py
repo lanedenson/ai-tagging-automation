@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 import openpyxl
 from datetime import datetime
 from anthropic import Anthropic
@@ -17,10 +19,17 @@ def log_message(message):
 
 # Initialize Anthropic client
 try:
-    anthropic_key = open('data/anthropic_key.txt', 'r').read().strip()
+    # Load environment variables from .env file
+    load_dotenv()
+    
+    # Get API key from environment variable
+    anthropic_key = os.getenv('ANTHROPIC_API_KEY')
+    if not anthropic_key:
+        raise ValueError("ANTHROPIC_API_KEY environment variable not found")
+        
     client = Anthropic(api_key=anthropic_key)
-except FileNotFoundError:
-    log_message("Error: anthropic_key.txt file not found in data directory")
+except Exception as e:
+    log_message(f"Error initializing Anthropic client: {str(e)}")
     log_file.close()
     exit()
 
@@ -135,7 +144,8 @@ for row in range(2, worksheet.max_row + 1):
         log_message(f"Writing '{tag}' to row {row}, column {column}")
 
 # Save the updated XLSX file
-workbook.save('data/output-with-tags.xlsx')
+output_filename = 'data/output-with-tags-ai-weighted.xlsx'
+workbook.save(output_filename)
 
-log_message("Processing complete. Results saved in 'output-with-tags-ai-weighted.xlsx'")
+log_message(f"Processing complete. Results saved in '{output_filename}'")
 log_file.close()
