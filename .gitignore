@@ -32,9 +32,12 @@ venv/
 
 # Project specific
 data/
-data/*.log
-data/*.txt
-data/*.xlsx
+input/**
+output/**
+*.log
+*.txt
+*.xlsx
+*.csv
 
 # IDE
 .idea/
